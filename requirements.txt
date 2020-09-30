@@ -9,4 +9,5 @@ keras==2.2.4
 gunicorn==20.0.4
 ipython==7.16.1
 ipython-genutils==0.2.0
+opencv-contrib-python-headless==4.4.0.42
 
