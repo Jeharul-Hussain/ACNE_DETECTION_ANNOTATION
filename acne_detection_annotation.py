@@ -15,7 +15,9 @@ import cv2
 import imageio
 os.chdir('Mask_RCNN')
 os.system('python setup.py install')
+print('before sleeping')
 time.sleep(30)
+print('after sleeping)
 os.chdir('..')
 from mrcnn.config import Config
 from mrcnn import model as modellib
