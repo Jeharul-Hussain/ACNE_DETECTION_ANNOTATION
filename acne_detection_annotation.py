@@ -13,7 +13,7 @@ import shutil
 import cv2
 import imageio
 os.chdir('Mask_RCNN')
-os.popen('sh run_mrcnn.sh')
+os.system('python setup.py install')
 os.chdir('..')
 from mrcnn.config import Config
 from mrcnn import model as modellib
