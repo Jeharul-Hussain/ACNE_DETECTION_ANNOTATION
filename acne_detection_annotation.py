@@ -12,10 +12,6 @@ from tensorflow.keras.preprocessing import image
 import shutil
 import cv2
 import imageio
-!git clone https://www.github.com/matterport/Mask_RCNN.git
-os.chdir('Mask_RCNN')
-!python setup.py -q install
-os.chdir('app')
 from mrcnn.config import Config
 from mrcnn import model as modellib
 from mrcnn import visualize
