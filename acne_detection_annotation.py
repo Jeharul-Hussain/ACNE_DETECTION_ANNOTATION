@@ -1,5 +1,6 @@
 from flask import Flask, flash, request, url_for, render_template, redirect
 import os
+import time
 from os.path import join
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -14,11 +15,12 @@ import cv2
 import imageio
 os.chdir('Mask_RCNN')
 os.system('python setup.py install')
+time.sleep(30)
+os.chdir('..')
 from mrcnn.config import Config
 from mrcnn import model as modellib
 from mrcnn import visualize
 from mrcnn import utils
-os.chdir('..')
 from imutils import paths
 import imutils
 from tensorflow.compat.v1 import ConfigProto
