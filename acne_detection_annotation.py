@@ -18,6 +18,7 @@ from mrcnn.config import Config
 from mrcnn import model as modellib
 from mrcnn import visualize
 from mrcnn import utils
+os.chdir('..')
 from imutils import paths
 import imutils
 from tensorflow.compat.v1 import ConfigProto
@@ -67,7 +68,6 @@ def allowed_file(filename):
     return '.' in filename and \
      filename.rsplit('.',1)[1] in ALLOWED_EXTENSION
 
-os.chdir('..')
 app = Flask(__name__)
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
