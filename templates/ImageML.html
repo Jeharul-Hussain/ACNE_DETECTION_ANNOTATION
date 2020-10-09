@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Image Classification</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<!--<link rel="stylesheet" href="C:\Users\danie\Desktop\Flask UdemyKurs\static\css\style.css">-->
+<style> 
+  div.img_display {
+  width: 1800px;
+  height: 1000px;
+  overflow: auto;
+  }
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+</head>
+<body style="height:100%; width:100%; overflow:scroll;">
+  <div>
+    <div class="row">
+      <div class="col">
+
+        <h1>Upload an image</h1>
+        <hr>
+        <p>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class=flashes>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+           {% endwith %}
+        </p>
+        
+        <br>
+        <div class="row">
+          
+          {% if filename1 %}
+		  <div class="column">
+		  	<H3>Input Image</H3>
+		    <img src="{{ url_for('display_image', filename=filename1) }}" style="width:100%">
+		  </div>
+		  {% endif %}
+
+		  {% if filename %}
+		  <div class="column">
+		  	<H3>Processed Image</H3>
+		  	<img src="{{ url_for('display_image', filename=filename) }}"style="width:100%">
+		  </div>
+		  {% endif %}
+
+		</div>
+		<br>
+
+		<form action="{{ url_for('upload_image')}}" method="POST" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label>Select image</label>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" id="image">
+              
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Upload</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</body>
